@@ -61,9 +61,32 @@ a <- array(data = 1:90, dim = c(5, 6, 3))
 a
 #first position is row, then column, then level in c(5,6,3)
 
+#subsetting from a vector
+v <-1:100
+v
+v[1:15]
+v[c(2,4,6,8,10)]
+v<-101:200
+v[seq(from = 1, to = 100, by = 2)]
 
+#challenge 1
 
+vector <- c("Stately", "plump", "Buck", "Mulligan", "came", "from", "the", "stairhead", "bearing", "a", "bowl", "of", "lather", "on", "which", "a", "mirror", "and", "a", "razor", "lay" ,"crossed")
+vector
+a <-vector[seq(1, length(vector), 3)]
+a
 
+#challange 2
+m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
+m
+x <-m[,c(2,3,6)]
+x
+x<-m[c(6,8),]
+x
+x <- m[2:6, 2:9]
+x
+
+#challange 3
 
 
 

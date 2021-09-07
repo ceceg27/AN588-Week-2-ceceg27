@@ -26,3 +26,44 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+#module 4 notes and challenges
+
+#how to code simple matrix
+m<-matrix(data = c(1,2,3,4), nrow = 2, ncol = 2)
+m 
+m <- matrix(data = c(1, 2, 3, 4, 5, 6), nrow = 2, ncol = 3, byrow = FALSE)
+m
+m <- matrix(data = c(1, 2, 3, 4, 5, 6), nrow = 2, ncol = 3, byrow = TRUE)
+m
+
+#how to bind vectors to form a matrix
+#first one is by row, second is by column 
+v1 <- c(1, 2, 3, 4)
+v2 <- c(6, 7, 8, 9)
+m1 <- rbind(v1, v2)
+m1
+
+m2 <- cbind(v1, v2)
+m2
+
+#finding metadata in matrix
+class(m1)
+dim(m1)
+class(m2)
+dim(m2)
+colnames(m2)
+rownames(m2)
+str(m2) 
+
+#making arrays, a general data structure
+a <- array(data = 1:90, dim = c(5, 6, 3))
+a
+#first position is row, then column, then level in c(5,6,3)
+
+
+
+
+
+
+

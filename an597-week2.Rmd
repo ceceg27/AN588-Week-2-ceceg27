@@ -126,4 +126,34 @@ Primates<-list(Haplorhini,Strepsirhini)
 names(Primates) <- list("Haplorhini", "Strepsirhini")
 Primates
 
+#dataframes
+df <- data.frame(firstName = c("Nitin", "Silvy", "Ingrid", "Claire"), major = c("Biology (CM)",
+    "Anthropology (Bio)", "Anthropology (Medical)", "Biology (EEB)"), sex = c("M",
+    "F", "F", "F"), yearInProgram = c(1, 2, 2, 3))
+df
+df <- read.csv("~/Desktop/randompeople", sep = ",", header = TRUE, stringsAsFactors = FALSE)
+# only print select columns
+df[, c(1, 3, 4, 11, 12)]
 
+str(df)
+df[,3]
+df <- cbind(df, id = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+    17, 18, 19, 20))
+df <- cbind(df, school = c("BU", "BU", "Harvard", "Harvard", "BU", "Boston College",
+    "MIT", "BU", "BU", "UMASS Boston", "Harvard", "BU", "Boston College", "BU",
+    "Harvard", "MIT", "Harvard", "BU", "UMASS Boston", "Harvard"))
+df
+new_df <- df[df$school == "BU", ]
+new_df
+
+new_df <- df[df$school == "BU", c("name.last", "name.first", "school")]
+new_df
+
+#challange 5
+m3 <- matrix(data= c( 3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2), nrow = 3, ncol = 5, byrow = TRUE)
+m3
+df_m <- as.data.frame (m3)
+as.factor(df_m[,3])
+str(df_m)
+as.logical(df_m[,3])
+str(df_m)

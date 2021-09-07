@@ -157,3 +157,61 @@ as.factor(df_m[,3])
 str(df_m)
 as.logical(df_m[,3])
 str(df_m)
+
+#module 5
+#loading a txt file
+f <- "~/Desktop/CPDS-1960-2014-reduced.txt"
+d <- read.table(f, header = TRUE, sep =",", stringsAsFactors = FALSE)
+head(d)
+tail(d)
+class(d)
+#loading a cvs
+d <- read.delim(f, header = TRUE, stringsAsFactors = FALSE)
+head(d) 
+f <- "~/Desktop/CPDS-1960-2014-reduced.csv"
+d <- read.table(f, header = TRUE, sep =",", stringsAsFactors = FALSE)
+head(d)
+require(readr)
+#makes things into even nicer tables (loaing with readr for txt and cvs)
+f <- "~/Desktop/CPDS-1960-2014-reduced.txt"
+d <- read_tsv(f, col_names = TRUE)
+class(d)
+head(d)
+require(readr)
+f <- "~/Desktop/CPDS-1960-2014-reduced.csv"
+d <- read_csv(f, col_names = TRUE)
+head(d)
+#loading xtxl with readxl
+require(readxl)
+f <- "~/Desktop/CPDS-1960-2014-reduced.xlsx"
+d <- read_excel(f, sheet = 1, col_names = TRUE)
+head(d)
+str(d)
+#loading xtxl with xlconnect
+require(XLConnect)
+f <- "~/Desktop/CPDS-1960-2014-reduced.xlsx"
+d <- readWorksheetFromFile(f, sheet = 1, header = TRUE)
+head(d)
+str(d)
+f <- "~/Desktop/output.xlsx"
+if (file.exists(f)) {file.remove(f)}
+writeWorksheetToFile(f, d, sheet = "myData", clearSheets = TRUE)
+#getting an error here
+#importing files from a remote server
+#cvs
+library(curl)
+f <- curl("https://raw.githubusercontent.com/fuzzyatelin/fuzzyatelin.github.io/master/AN597_Fall19/CPDS-1960-2014-reduced.csv")
+d <- read.csv(f, header = TRUE, sep = ",", stringsAsFactors = FALSE)
+head(d)
+#txt
+f <- curl("https://raw.githubusercontent.com/fuzzyatelin/fuzzyatelin.github.io/master/AN597_Fall19/CPDS-1960-2014-reduced.txt")
+d <- read.table(f, header = TRUE, sep="\t", stringsAsFactors = FALSE)
+head(d)
+#importing from remote using readr
+library(readr)
+f <- "https://raw.githubusercontent.com/fuzzyatelin/fuzzyatelin.github.io/master/AN597_Fall19/CPDS-1960-2014-reduced.csv"
+d <- read_csv(f, col_names = TRUE)
+#getting an error when I do this
+f <- "https://raw.githubusercontent.com/fuzzyatelin/fuzzyatelin.github.io/master/AN597_Fall19/CPDS-1960-2014-reduced.txt"
+d <- read_tsv(f, col_names = TRUE)
+#getting an error with this one too, is the url correct?

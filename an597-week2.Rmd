@@ -29,6 +29,7 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 
 #module 4 notes and challenges
 
+
 #how to code simple matrix
 m<-matrix(data = c(1,2,3,4), nrow = 2, ncol = 2)
 m 
@@ -70,13 +71,15 @@ v<-101:200
 v[seq(from = 1, to = 100, by = 2)]
 
 #challenge 1
-
+```{r challange 1}
 vector <- c("Stately", "plump", "Buck", "Mulligan", "came", "from", "the", "stairhead", "bearing", "a", "bowl", "of", "lather", "on", "which", "a", "mirror", "and", "a", "razor", "lay" ,"crossed")
 vector
 a <-vector[seq(1, length(vector), 3)]
 a
+```
 
 #challange 2
+```{r challange 2}
 m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
 m
 x <-m[,c(2,3,6)]
@@ -85,15 +88,18 @@ x<-m[c(6,8),]
 x
 x <- m[2:6, 2:9]
 x
+```
 
 #challange 3
+```{r challange 3}
 a <- array(data = 400:1, dim = c(5, 5, 4, 4))
 a
 a[1, 1, 1, 2]
 
-a[2, 3, 2, ]
+a[2, 3, 2,]
 
 a[1:5, 1:5, 3, 3]
+```
 
 #lists 
 s <- c("this", "is", "a", "vector", "of", "strings")  # here we have a vector
@@ -105,7 +111,7 @@ l[[1]]
 l[[2]][2,6]
 
 #challange 4
-
+```{r challange 4}
 Lemuroidea <- c("Cheirogaleidae", "Lepilemuridae", "Indriidae", "Lemuridae",
     "Daubentoniidae")
 Lorisoidea <- c("Lorisidae", "Galagidae")
@@ -125,6 +131,7 @@ Haplorhini
 Primates<-list(Haplorhini,Strepsirhini)
 names(Primates) <- list("Haplorhini", "Strepsirhini")
 Primates
+```
 
 #dataframes
 df <- data.frame(firstName = c("Nitin", "Silvy", "Ingrid", "Claire"), major = c("Biology (CM)",
@@ -150,6 +157,7 @@ new_df <- df[df$school == "BU", c("name.last", "name.first", "school")]
 new_df
 
 #challange 5
+```{r challage 5}
 m3 <- matrix(data= c( 3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2), nrow = 3, ncol = 5, byrow = TRUE)
 m3
 df_m <- as.data.frame (m3)
@@ -157,6 +165,7 @@ as.factor(df_m[,3])
 str(df_m)
 as.logical(df_m[,3])
 str(df_m)
+```
 
 #module 5
 #loading a txt file
@@ -215,3 +224,4 @@ d <- read_csv(f, col_names = TRUE)
 f <- "https://raw.githubusercontent.com/fuzzyatelin/fuzzyatelin.github.io/master/AN597_Fall19/CPDS-1960-2014-reduced.txt"
 d <- read_tsv(f, col_names = TRUE)
 #getting an error with this one too, is the url correct?
+

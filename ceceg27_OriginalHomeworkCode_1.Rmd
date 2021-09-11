@@ -27,7 +27,7 @@ plot(pressure)
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
-#module 4 notes and challenges
+#module 4 notes and challenges, challanges are made into chunks, while notes are not. 
 
 
 #how to code simple matrix
@@ -48,7 +48,7 @@ m1
 m2 <- cbind(v1, v2)
 m2
 
-#finding metadata in matrix
+#finding metadata in matrix, useful commands
 class(m1)
 dim(m1)
 class(m2)
@@ -57,7 +57,7 @@ colnames(m2)
 rownames(m2)
 str(m2) 
 
-#making arrays, a general data structure
+#making arrays (array = a general data structure)
 a <- array(data = 1:90, dim = c(5, 6, 3))
 a
 #first position is row, then column, then level in c(5,6,3)
@@ -71,6 +71,7 @@ v<-101:200
 v[seq(from = 1, to = 100, by = 2)]
 
 #challenge 1
+#I used a different method than utalizing stringr to extract every third element (beginning with element 1)
 ```{r challange 1}
 vector <- c("Stately", "plump", "Buck", "Mulligan", "came", "from", "the", "stairhead", "bearing", "a", "bowl", "of", "lather", "on", "which", "a", "mirror", "and", "a", "razor", "lay" ,"crossed")
 vector
@@ -101,7 +102,7 @@ a[2, 3, 2,]
 a[1:5, 1:5, 3, 3]
 ```
 
-#lists 
+#how to make lists
 s <- c("this", "is", "a", "vector", "of", "strings")  # here we have a vector
 m <- matrix(data = 1:40, nrow = 5, ncol = 8)  # this is a matrix
 b <- FALSE  #and this is a logical statement
@@ -110,7 +111,7 @@ l
 l[[1]]
 l[[2]][2,6]
 
-#challange 4
+#challange 4, this was a pain in the butt
 ```{r challange 4}
 Lemuroidea <- c("Cheirogaleidae", "Lepilemuridae", "Indriidae", "Lemuridae",
     "Daubentoniidae")
@@ -133,7 +134,7 @@ names(Primates) <- list("Haplorhini", "Strepsirhini")
 Primates
 ```
 
-#dataframes
+#dataframes notes
 df <- data.frame(firstName = c("Nitin", "Silvy", "Ingrid", "Claire"), major = c("Biology (CM)",
     "Anthropology (Bio)", "Anthropology (Medical)", "Biology (EEB)"), sex = c("M",
     "F", "F", "F"), yearInProgram = c(1, 2, 2, 3))
@@ -163,65 +164,7 @@ m3
 df_m <- as.data.frame (m3)
 as.factor(df_m[,3])
 str(df_m)
-as.logical(df_m[,3])
+as.logical(df_m[,2])
 str(df_m)
 ```
-
-#module 5
-#loading a txt file
-f <- "~/Desktop/CPDS-1960-2014-reduced.txt"
-d <- read.table(f, header = TRUE, sep =",", stringsAsFactors = FALSE)
-head(d)
-tail(d)
-class(d)
-#loading a cvs
-d <- read.delim(f, header = TRUE, stringsAsFactors = FALSE)
-head(d) 
-f <- "~/Desktop/CPDS-1960-2014-reduced.csv"
-d <- read.table(f, header = TRUE, sep =",", stringsAsFactors = FALSE)
-head(d)
-require(readr)
-#makes things into even nicer tables (loaing with readr for txt and cvs)
-f <- "~/Desktop/CPDS-1960-2014-reduced.txt"
-d <- read_tsv(f, col_names = TRUE)
-class(d)
-head(d)
-require(readr)
-f <- "~/Desktop/CPDS-1960-2014-reduced.csv"
-d <- read_csv(f, col_names = TRUE)
-head(d)
-#loading xtxl with readxl
-require(readxl)
-f <- "~/Desktop/CPDS-1960-2014-reduced.xlsx"
-d <- read_excel(f, sheet = 1, col_names = TRUE)
-head(d)
-str(d)
-#loading xtxl with xlconnect
-require(XLConnect)
-f <- "~/Desktop/CPDS-1960-2014-reduced.xlsx"
-d <- readWorksheetFromFile(f, sheet = 1, header = TRUE)
-head(d)
-str(d)
-f <- "~/Desktop/output.xlsx"
-if (file.exists(f)) {file.remove(f)}
-writeWorksheetToFile(f, d, sheet = "myData", clearSheets = TRUE)
-#getting an error here
-#importing files from a remote server
-#cvs
-library(curl)
-f <- curl("https://raw.githubusercontent.com/fuzzyatelin/fuzzyatelin.github.io/master/AN597_Fall19/CPDS-1960-2014-reduced.csv")
-d <- read.csv(f, header = TRUE, sep = ",", stringsAsFactors = FALSE)
-head(d)
-#txt
-f <- curl("https://raw.githubusercontent.com/fuzzyatelin/fuzzyatelin.github.io/master/AN597_Fall19/CPDS-1960-2014-reduced.txt")
-d <- read.table(f, header = TRUE, sep="\t", stringsAsFactors = FALSE)
-head(d)
-#importing from remote using readr
-library(readr)
-f <- "https://raw.githubusercontent.com/fuzzyatelin/fuzzyatelin.github.io/master/AN597_Fall19/CPDS-1960-2014-reduced.csv"
-d <- read_csv(f, col_names = TRUE)
-#getting an error when I do this
-f <- "https://raw.githubusercontent.com/fuzzyatelin/fuzzyatelin.github.io/master/AN597_Fall19/CPDS-1960-2014-reduced.txt"
-d <- read_tsv(f, col_names = TRUE)
-#getting an error with this one too, is the url correct?
 

@@ -1,0 +1,88 @@
+---
+title: "ceceg27module5"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+#module 5
+#loading a txt file
+f <- "~/Desktop/CPDS-1960-2014-reduced.txt"
+d <- read.table(f, header = TRUE, sep =",", stringsAsFactors = FALSE)
+head(d)
+tail(d)
+class(d)
+#loading a cvs
+d <- read.delim(f, header = TRUE, stringsAsFactors = FALSE)
+head(d) 
+f <- "~/Desktop/CPDS-1960-2014-reduced.csv"
+d <- read.table(f, header = TRUE, sep =",", stringsAsFactors = FALSE)
+head(d)
+require(readr)
+#makes things into even nicer tables (loaing with readr for txt and cvs)
+f <- "~/Desktop/CPDS-1960-2014-reduced.txt"
+d <- read_tsv(f, col_names = TRUE)
+class(d)
+head(d)
+require(readr)
+f <- "~/Desktop/CPDS-1960-2014-reduced.csv"
+d <- read_csv(f, col_names = TRUE)
+head(d)
+#loading xtxl with readxl
+require(readxl)
+f <- "~/Desktop/CPDS-1960-2014-reduced.xlsx"
+d <- read_excel(f, sheet = 1, col_names = TRUE)
+head(d)
+str(d)
+#loading xtxl with xlconnect
+require(XLConnect)
+f <- "~/Desktop/CPDS-1960-2014-reduced.xlsx"
+d <- readWorksheetFromFile(f, sheet = 1, header = TRUE)
+head(d)
+str(d)
+f <- "~/Desktop/output.xlsx"
+if (file.exists(f)) {file.remove(f)}
+writeWorksheetToFile(f, d, sheet = "myData", clearSheets = TRUE)
+#getting an error here
+#importing files from a remote server
+#cvs
+library(curl)
+f <- curl("https://raw.githubusercontent.com/fuzzyatelin/fuzzyatelin.github.io/master/AN597_Fall19/CPDS-1960-2014-reduced.csv")
+d <- read.csv(f, header = TRUE, sep = ",", stringsAsFactors = FALSE)
+head(d)
+#txt
+f <- curl("https://raw.githubusercontent.com/fuzzyatelin/fuzzyatelin.github.io/master/AN597_Fall19/CPDS-1960-2014-reduced.txt")
+d <- read.table(f, header = TRUE, sep="\t", stringsAsFactors = FALSE)
+head(d)
+#importing from remote using readr
+library(readr)
+f <- "https://raw.githubusercontent.com/fuzzyatelin/fuzzyatelin.github.io/master/AN597_Fall19/CPDS-1960-2014-reduced.csv"
+d <- read_csv(f, col_names = TRUE)
+#getting an error when I do this
+f <- "https://raw.githubusercontent.com/fuzzyatelin/fuzzyatelin.github.io/master/AN597_Fall19/CPDS-1960-2014-reduced.txt"
+d <- read_tsv(f, col_names = TRUE)
+#getting an error with this one too, is the url correct?
+
+

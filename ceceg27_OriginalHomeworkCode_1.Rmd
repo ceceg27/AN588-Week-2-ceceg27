@@ -86,7 +86,7 @@ Primates
 
 #challange 5
 ```{r challage 5}
-m3 <- matrix(data= c( 3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2), nrow = 3, ncol = 5, byrow = TRUE)
+m3 <- matrix(data= c( 3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2), nrow = 5, ncol = 3, byrow = TRUE)
 m3
 df_m <- as.data.frame (m3)
 as.factor(df_m[,3])

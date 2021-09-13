@@ -27,51 +27,10 @@ plot(pressure)
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
-#module 4 notes and challenges, challanges are made into chunks, while notes are not. 
-
-
-#how to code simple matrix
-m<-matrix(data = c(1,2,3,4), nrow = 2, ncol = 2)
-m 
-m <- matrix(data = c(1, 2, 3, 4, 5, 6), nrow = 2, ncol = 3, byrow = FALSE)
-m
-m <- matrix(data = c(1, 2, 3, 4, 5, 6), nrow = 2, ncol = 3, byrow = TRUE)
-m
-
-#how to bind vectors to form a matrix
-#first one is by row, second is by column 
-v1 <- c(1, 2, 3, 4)
-v2 <- c(6, 7, 8, 9)
-m1 <- rbind(v1, v2)
-m1
-
-m2 <- cbind(v1, v2)
-m2
-
-#finding metadata in matrix, useful commands
-class(m1)
-dim(m1)
-class(m2)
-dim(m2)
-colnames(m2)
-rownames(m2)
-str(m2) 
-
-#making arrays (array = a general data structure)
-a <- array(data = 1:90, dim = c(5, 6, 3))
-a
-#first position is row, then column, then level in c(5,6,3)
-
-#subsetting from a vector
-v <-1:100
-v
-v[1:15]
-v[c(2,4,6,8,10)]
-v<-101:200
-v[seq(from = 1, to = 100, by = 2)]
+#module 4challenges
 
 #challenge 1
-#I used a different method than utalizing stringr to extract every third element (beginning with element 1)
+#I used a different method than  utalizing stringr to extract every third element (beginning with element 1)
 ```{r challange 1}
 vector <- c("Stately", "plump", "Buck", "Mulligan", "came", "from", "the", "stairhead", "bearing", "a", "bowl", "of", "lather", "on", "which", "a", "mirror", "and", "a", "razor", "lay" ,"crossed")
 vector
@@ -102,15 +61,6 @@ a[2, 3, 2,]
 a[1:5, 1:5, 3, 3]
 ```
 
-#how to make lists
-s <- c("this", "is", "a", "vector", "of", "strings")  # here we have a vector
-m <- matrix(data = 1:40, nrow = 5, ncol = 8)  # this is a matrix
-b <- FALSE  #and this is a logical statement
-l <- list(s, m, b)  # this puts them all together as a list
-l
-l[[1]]
-l[[2]][2,6]
-
 #challange 4, this was a pain in the butt
 ```{r challange 4}
 Lemuroidea <- c("Cheirogaleidae", "Lepilemuridae", "Indriidae", "Lemuridae",
@@ -133,29 +83,6 @@ Primates<-list(Haplorhini,Strepsirhini)
 names(Primates) <- list("Haplorhini", "Strepsirhini")
 Primates
 ```
-
-#dataframes notes
-df <- data.frame(firstName = c("Nitin", "Silvy", "Ingrid", "Claire"), major = c("Biology (CM)",
-    "Anthropology (Bio)", "Anthropology (Medical)", "Biology (EEB)"), sex = c("M",
-    "F", "F", "F"), yearInProgram = c(1, 2, 2, 3))
-df
-df <- read.csv("~/Desktop/randompeople", sep = ",", header = TRUE, stringsAsFactors = FALSE)
-# only print select columns
-df[, c(1, 3, 4, 11, 12)]
-
-str(df)
-df[,3]
-df <- cbind(df, id = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
-    17, 18, 19, 20))
-df <- cbind(df, school = c("BU", "BU", "Harvard", "Harvard", "BU", "Boston College",
-    "MIT", "BU", "BU", "UMASS Boston", "Harvard", "BU", "Boston College", "BU",
-    "Harvard", "MIT", "Harvard", "BU", "UMASS Boston", "Harvard"))
-df
-new_df <- df[df$school == "BU", ]
-new_df
-
-new_df <- df[df$school == "BU", c("name.last", "name.first", "school")]
-new_df
 
 #challange 5
 ```{r challage 5}

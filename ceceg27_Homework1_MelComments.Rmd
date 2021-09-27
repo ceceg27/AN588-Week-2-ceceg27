@@ -1,0 +1,96 @@
+---
+title: "AN597-week-2"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+#module 4challenges
+
+#challenge 1
+#I used a different method than  utalizing stringr to extract every third element (beginning with element 1)
+```{r challange 1}
+vector <- c("Stately", "plump", "Buck", "Mulligan", "came", "from", "the", "stairhead", "bearing", "a", "bowl", "of", "lather", "on", "which", "a", "mirror", "and", "a", "razor", "lay" ,"crossed")
+vector
+a <-vector[seq(1, length(vector), 3)]
+a
+```
+
+*If you want to use the stringr function, you don't have to go through the trouble of putting quotations around each word in the sentence, you can use the str_split() function like so:* 
+  library(stringr)
+  v<-"Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather
+  on which a mirror and a razor lay crossed."
+  v<-str_split(v, " ", simplify = TRUE) #separating each word 
+  v[seq(from = 3, to = 22, by = 3)]
+*Here, you are stll using the seq() function, but the str_split function first splits the string in the quotation by each word.-Mel*
+
+
+#challange 2
+```{r challange 2}
+m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
+m
+x <-m[,c(2,3,6)]
+x
+x<-m[c(6,8),]
+x
+x <- m[2:6, 2:9]
+x
+```
+
+#challange 3
+```{r challange 3}
+a <- array(data = 400:1, dim = c(5, 5, 4, 4))
+a
+a[1, 1, 1, 2]
+
+a[2, 3, 2,]
+
+a[1:5, 1:5, 3, 3]
+```
+
+#challange 4, this was a pain in the butt
+```{r challange 4}
+Lemuroidea <- c("Cheirogaleidae", "Lepilemuridae", "Indriidae", "Lemuridae",
+    "Daubentoniidae")
+Lorisoidea <- c("Lorisidae", "Galagidae")
+Strepsirhini <- list(Lemuroidea, Lorisoidea)
+names(Strepsirhini) <- list("Lemuroidea", "Lorisoidea")
+Strepsirhini
+
+Platyrrhini<- c("Cebidae", "Atelidae", "Pitheciidae")
+Catarrhini <- c("Cercopithecidae", "Hylobatidae", "Hominidae")
+Anthropoidea <- list(Platyrrhini, Catarrhini)
+names(Anthropoidea) <- list("Platyrrhini", "Catarrhini")
+Anthropoidea
+Tarsioidea <-c("Tarsiidae")
+Haplorhini <-list(Anthropoidea, Tarsioidea)
+names(Haplorhini) <- list("Anthropoidea", "Tarsioidea")
+Haplorhini
+Primates<-list(Haplorhini,Strepsirhini)
+names(Primates) <- list("Haplorhini", "Strepsirhini")
+Primates
+```
+
+#challange 5
+```{r challage 5}
+m3 <- matrix(data= c( 3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2), nrow = 5, ncol = 3, byrow = TRUE)
+m3
+df_m <- as.data.frame (m3)
+as.factor(df_m[,3])
+str(df_m)
+as.logical(df_m[,2])
+str(df_m)
+```
+
+*it still looks like your last two columns are numerical. You can try:*
+    df_m[,2] <- as.logical(df_m$V2) #coercing it to the dataframe you have built. the $     in the function calls on a particular column (which are now V1-V3 after coercing to     a df)
+    df_m[,3] <- as.factor(m3$V3)  #same here but as as factor. 
+    *-Mel*
